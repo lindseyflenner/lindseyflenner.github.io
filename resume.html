@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lindsey Flenner — Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#2b2a24;
+    --muted:#5c5a4e;
+    --accent:#6b6a45;
+    --rule:#d8d2be;
+    --bg:#f3efe3;
+    --paper:#ffffff;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    color:var(--ink);
+    background:var(--bg);
+    line-height:1.5;
+    font-size:15px;
+  }
+
+  /* Screen-only action bar */
+  .bar{
+    position:sticky;top:0;z-index:10;
+    background:#2b2a24;color:#f3efe3;
+    display:flex;align-items:center;justify-content:space-between;
+    gap:16px;padding:12px 20px;
+    font-size:14px;
+  }
+  .bar .hint{color:#d8d2be;}
+  .bar button{
+    font:inherit;font-weight:600;cursor:pointer;
+    background:#6b6a45;color:#fff;border:none;
+    padding:9px 16px;border-radius:8px;
+  }
+  .bar button:hover{background:#7c7b52;}
+  .bar a{color:#e6e0cc;text-decoration:none;font-weight:500;}
+  .bar a:hover{text-decoration:underline;}
+
+  .sheet{
+    max-width:820px;margin:28px auto;
+    background:var(--paper);
+    padding:56px 64px;
+    box-shadow:0 10px 40px rgba(0,0,0,.12);
+    border-radius:2px;
+  }
+
+  header.r-head{border-bottom:2px solid var(--accent);padding-bottom:16px;margin-bottom:22px;}
+  h1{
+    font-family:'Fraunces',serif;font-weight:600;
+    font-size:34px;line-height:1.05;margin:0 0 6px;
+    letter-spacing:-.01em;color:var(--ink);
+  }
+  .contact{color:var(--muted);font-size:13.5px;}
+  .contact a{color:var(--muted);text-decoration:none;}
+  .contact a:hover{text-decoration:underline;}
+
+  h2{
+    font-family:'Fraunces',serif;font-weight:600;
+    font-size:15px;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--accent);
+    margin:26px 0 10px;padding-bottom:5px;border-bottom:1px solid var(--rule);
+  }
+  section:first-of-type h2{margin-top:6px;}
+
+  p.summary{margin:0;color:var(--ink);}
+
+  .job{margin:0 0 15px;}
+  .job:last-child{margin-bottom:4px;}
+  .job-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:4px;}
+  .role{font-weight:600;color:var(--ink);}
+  .role .co{color:var(--accent);}
+  .dates{color:var(--muted);font-size:13px;white-space:nowrap;}
+  ul{margin:6px 0 0;padding-left:18px;}
+  li{margin:0 0 4px;}
+  li b{font-weight:600;}
+  .skills li{margin-bottom:6px;}
+
+  @media print{
+    @page{margin:14mm;}
+    body{background:#fff;font-size:11.5px;}
+    .bar{display:none;}
+    .sheet{max-width:none;margin:0;padding:0;box-shadow:none;border-radius:0;}
+    h1{font-size:26px;}
+    h2{font-size:12.5px;margin:16px 0 7px;}
+    a{color:var(--ink);}
+    .job{margin-bottom:11px;}
+    section{break-inside:avoid;}
+    .job{break-inside:avoid;}
+  }
+</style>
+</head>
+<body>
+  <div class="bar">
+    <span class="hint">To save as PDF: click Save as PDF, then choose “Save as PDF” as the destination.</span>
+    <span>
+      <button onclick="window.print()">Save as PDF</button>
+      &nbsp;<a href="index.html">&larr; Back to site</a>
+    </span>
+  </div>
+
+  <div class="sheet">
+    <header class="r-head">
+      <h1>Lindsey Flenner</h1>
+      <div class="contact">Seattle, WA &nbsp;·&nbsp; 817-253-0801 &nbsp;·&nbsp; <a href="mailto:lindseyflenner@gmail.com">lindseyflenner@gmail.com</a> &nbsp;·&nbsp; <a href="https://linkedin.com/in/flenner">linkedin.com/in/flenner</a></div>
+    </header>
+
+    <section>
+      <h2>Summary</h2>
+      <p class="summary">CX operations leader with 10+ years building and scaling customer support systems at Gusto and Apple. Owned AI-enabled operations for a 200,000+ customer base — sustaining 90%+ CSAT while automating manual workflows and turning conversation and SLA data into measurable productivity gains. Defines what “great” looks like for AI performance, and partners with Engineering to ship net-new tooling. Leads teams through change and measures success by fewer contacts, faster resolutions, and higher-quality outcomes.</p>
+    </section>
+
+    <section>
+      <h2>Professional Experience</h2>
+
+      <div class="job">
+        <div class="job-head">
+          <span class="role">Manager, Customer Operations <span class="co">· Gusto</span></span>
+          <span class="dates">July 2022 – Present</span>
+        </div>
+        <ul>
+          <li><b>Conversational AI:</b> Deployed and optimized LLM-powered chat and email/ticket support agents — tuning instruction sets and knowledge content to raise automated containment and resolution quality while safeguarding CSAT.</li>
+          <li><b>Agent-Assist &amp; QA Tooling:</b> Built internal agent-assist and QA tooling that streamlined agent workflows and standardized quality review across the support operation.</li>
+          <li><b>AI &amp; Data Automation:</b> Built and deployed AI-enabled reporting systems (Salesforce, Google Sheets, Looker/BI) that automated 40% of manual reporting and gave leadership real-time visibility into SLA health, throughput, and quality.</li>
+          <li><b>Quality &amp; CSAT:</b> Led a 42-member hybrid team (12 FTE, 30+ EXT) through high-stakes Open Enrollment for 200,000+ users, sustaining 90% CSAT via rigorous quality controls, QA frameworks, and clear role definition.</li>
+          <li><b>Measurable Outcomes:</b> Hit 150% OKR attainment by converting data signals into proactive capacity models — producing the org’s lowest rework rate and stable delivery through peak demand.</li>
+          <li><b>Team Leadership:</b> Set direction for and developed 12 FTE (plus 30+ contractors), lifting engagement 20% through structured coaching and psychological-safety initiatives across major leadership transitions.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-head">
+          <span class="role">Project Manager <span class="co">· Agency for the People</span></span>
+          <span class="dates">2018 – 2022</span>
+        </div>
+        <ul>
+          <li><b>Ship with Engineering:</b> Partnered with cross-functional pods of 15 engineers, designers, and QA analysts to scope, build, and launch platform features — driving a 25% increase in release velocity.</li>
+          <li><b>Delivery &amp; Reliability:</b> Secured 95%+ on-time delivery across Agile sprints, sustaining consistent platform evolution and stakeholder trust.</li>
+          <li><b>Product Partnership:</b> Reduced scope creep 20% and mitigated technical debt through tight Product–Customer Success alignment.</li>
+          <li><b>Financial Discipline:</b> Managed a portfolio of internal and customer-facing platforms to within &lt;5% budget variance.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-head">
+          <span class="role">People Operations Manager <span class="co">· Apple, Inc.</span></span>
+          <span class="dates">2013 – 2018</span>
+        </div>
+        <ul>
+          <li><b>Scaling &amp; Development:</b> Led regional operations for 300+ employees; designed onboarding and upskilling programs that cut time-to-productivity 25% and early-stage attrition 15%.</li>
+          <li><b>Talent Strategy:</b> Launched a recruitment and employer-branding strategy that lifted candidate NPS 35 points and reduced time-to-hire 20%.</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-head">
+          <span class="role">Sales Specialist <span class="co">· Apple, Inc.</span></span>
+          <span class="dates">2008 – 2013</span>
+        </div>
+        <ul>
+          <li><b>Consultative Sales:</b> Delivered personalized, needs-based sales experiences in a high-volume retail environment, consistently exceeding targets while upholding Apple’s premium customer experience standards.</li>
+          <li><b>Foundational Leadership:</b> Five formative years on the sales floor shaped a customer-obsessed, empathy-first leadership philosophy — reading customer needs quickly, de-escalating with care, and turning every interaction into trust.</li>
+          <li><b>Peer Coaching &amp; Enablement:</b> Mentored new team members on product knowledge and sales approach — an early throughline to the coaching and team development that define my leadership today.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2>Skills</h2>
+      <ul class="skills">
+        <li><b>AI &amp; CX Systems:</b> LLM Chat &amp; Email/Ticket Agents, Instruction-Set &amp; Prompt Tuning, Agent-Assist &amp; QA Tooling, Containment &amp; Resolution Rate, AI Performance Metrics, Contact-Driver Analysis, CSAT/Quality, Process Automation, Escalation Handling</li>
+        <li><b>Data &amp; Technology:</b> Looker/BI, Salesforce, Google Sheets, SQL (working knowledge), Agile Methodology</li>
+        <li><b>Leadership:</b> Team Development, Cross-functional Alignment (Product / Engineering / Data), Change Management, Executive Communication</li>
+      </ul>
+    </section>
+  </div>
+</body>
+</html>
