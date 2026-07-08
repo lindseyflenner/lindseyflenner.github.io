@@ -121,6 +121,30 @@
 
   footer{background:var(--navy);color:#cabf9f;text-align:center;font-size:13.5px;padding:26px 0;border-top:1px solid rgba(255,255,255,.08)}
 
+  /* Scroll progress bar */
+  .progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:100;
+    background:linear-gradient(90deg,var(--accent),#cfc297);transition:width .12s ease-out}
+
+  /* Scroll reveal */
+  .reveal{opacity:0;transform:translateY(26px);
+    transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  /* Numbered timeline */
+  .timeline.numbered{border-left:none;margin-left:0}
+  .timeline.numbered .job{padding-left:70px}
+  .timeline.numbered .job:before{
+    content:attr(data-n);left:0;top:2px;width:48px;height:48px;border-radius:50%;
+    background:#fff;border:1px solid var(--accent);
+    display:flex;align-items:center;justify-content:center;
+    font-family:var(--serif);font-size:16px;font-weight:600;color:var(--accent);
+    box-shadow:0 6px 16px rgba(87,80,59,.10)}
+
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+    html{scroll-behavior:auto}
+  }
+
   @media (max-width:820px){
     .nav ul{
       display:none;position:absolute;top:64px;left:0;right:0;flex-direction:column;gap:0;
@@ -137,6 +161,8 @@
 </style>
 </head>
 <body>
+
+<div class="progress" id="progress"></div>
 
 <header>
   <div class="wrap nav">
@@ -178,10 +204,10 @@
         <p>I define what "great" looks like for AI performance and partner with Engineering to ship net-new tooling. I lead teams through change and measure success by fewer contacts, faster resolutions, and higher-quality outcomes.</p>
       </div>
       <div class="stats">
-        <div class="stat"><div class="num">10+</div><div class="lbl">Years in customer operations &amp; leadership</div></div>
-        <div class="stat"><div class="num">90%+</div><div class="lbl">CSAT sustained at scale</div></div>
-        <div class="stat"><div class="num">200K+</div><div class="lbl">Users supported through peak cycles</div></div>
-        <div class="stat"><div class="num">40%</div><div class="lbl">Manual reporting automated</div></div>
+        <div class="stat"><div class="num" data-to="10" data-suffix="+">0</div><div class="lbl">Years in customer operations &amp; leadership</div></div>
+        <div class="stat"><div class="num" data-to="90" data-suffix="%+">0</div><div class="lbl">CSAT sustained at scale</div></div>
+        <div class="stat"><div class="num" data-to="200" data-suffix="K+">0</div><div class="lbl">Users supported through peak cycles</div></div>
+        <div class="stat"><div class="num" data-to="40" data-suffix="%">0</div><div class="lbl">Manual reporting automated</div></div>
       </div>
     </div>
   </div>
@@ -193,9 +219,9 @@
       <div class="kicker">Experience</div>
       <h2>A track record of scaling teams and delivery.</h2>
     </div>
-    <div class="timeline">
+    <div class="timeline numbered">
 
-      <div class="job">
+      <div class="job" data-n="01">
         <div class="role">Manager, Customer Operations</div>
         <div class="co">Gusto</div>
         <div class="dates">July 2022 – Present</div>
@@ -209,7 +235,7 @@
         </ul>
       </div>
 
-      <div class="job">
+      <div class="job" data-n="02">
         <div class="role">Project Manager</div>
         <div class="co">Agency for the People</div>
         <div class="dates">2018 – 2022</div>
@@ -221,7 +247,7 @@
         </ul>
       </div>
 
-      <div class="job">
+      <div class="job" data-n="03">
         <div class="role">Manager, People Operations</div>
         <div class="co">Apple, Inc.</div>
         <div class="dates">2013 – 2018</div>
@@ -231,7 +257,7 @@
         </ul>
       </div>
 
-      <div class="job">
+      <div class="job" data-n="04">
         <div class="role">Sales Specialist</div>
         <div class="co">Apple, Inc.</div>
         <div class="dates">2008 – 2013</div>
@@ -252,8 +278,8 @@
       <div class="kicker">Community</div>
       <h2>Giving back close to home.</h2>
     </div>
-    <div class="timeline">
-      <div class="job">
+    <div class="timeline numbered">
+      <div class="job" data-n="01">
         <div class="role">Member, Board of Directors</div>
         <div class="co">South Whidbey Pride</div>
         <div class="dates">2026 – Present</div>
@@ -328,6 +354,66 @@
 <script>
   document.getElementById('yr').textContent = new Date().getFullYear();
   function closeMenu(){ document.getElementById('navlist').classList.remove('open'); }
+
+  // Scroll progress bar
+  var pb = document.getElementById('progress');
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    pb.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+  }
+  document.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // Count-up animation
+  function countUp(el){
+    if (el.dataset.done) return;
+    el.dataset.done = '1';
+    var to = parseFloat(el.dataset.to) || 0;
+    var suffix = el.dataset.suffix || '';
+    var dur = 1100, start = null;
+    function step(ts){
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(to * eased) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+      else el.textContent = to + suffix;
+    }
+    requestAnimationFrame(step);
+  }
+
+  // Scroll-reveal
+  var revealEls = document.querySelectorAll(
+    '.hero-inner, #about .sec-head, #about .about p, #about .stats .stat, ' +
+    '#experience .sec-head, #experience .job, #community .sec-head, #community .job, ' +
+    '#skills .sec-head, #skills .skill-card, #contact .wrap'
+  );
+  revealEls.forEach(function(el){ el.classList.add('reveal'); });
+  function stagger(sel){
+    document.querySelectorAll(sel).forEach(function(el,i){ el.style.transitionDelay = (i * 90) + 'ms'; });
+  }
+  stagger('.stats .stat');
+  stagger('.skill-cols .skill-card');
+
+  if ('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){
+          e.target.classList.add('in');
+          if (e.target.matches('.stat')){
+            var n = e.target.querySelector('.num');
+            if (n) countUp(n);
+          }
+          io.unobserve(e.target);
+        }
+      });
+    }, {threshold:0.18, rootMargin:'0px 0px -40px 0px'});
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add('in'); });
+    document.querySelectorAll('.stat .num').forEach(countUp);
+  }
 </script>
 </body>
 </html>
