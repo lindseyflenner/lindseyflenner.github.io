@@ -65,13 +65,7 @@
   .hero h1{font-family:var(--serif);font-size:clamp(34px,5.4vw,56px);line-height:1.08;letter-spacing:-.02em;font-weight:600;margin-bottom:20px}
   .hero p.lede{font-size:clamp(16px,2vw,19px);color:#e6ddc6;max-width:640px}
   .hero .cta{margin-top:38px;display:flex;gap:14px;flex-wrap:wrap}
-  .hero-grid{display:grid;grid-template-columns:1fr auto;gap:56px;align-items:center;position:relative;z-index:2}
-  .headshot{
-    width:230px;height:230px;border-radius:50%;object-fit:cover;
-    border:5px solid rgba(255,255,255,.15);box-shadow:0 18px 50px rgba(0,0,0,.35);
-    background:#6e654a;
-    object-position:74% 20%;
-  }
+  .hero-inner{position:relative;z-index:2;max-width:720px}
   .btn{
     display:inline-block;padding:13px 26px;border-radius:8px;font-weight:600;font-size:14.5px;
     transition:transform .15s ease, box-shadow .15s ease, background .2s;
@@ -137,9 +131,6 @@
     .nav ul a{display:block;padding:12px 0}
     .menu-toggle{display:block}
     .about-grid{grid-template-columns:1fr;gap:36px}
-    .hero-grid{grid-template-columns:1fr;gap:34px;text-align:left}
-    .hero .order-photo{order:-1}
-    .headshot{width:150px;height:150px}
     .skill-cols{grid-template-columns:1fr}
     section{padding:64px 0}
   }
@@ -163,19 +154,13 @@
 
 <section class="hero" id="top">
   <div class="wrap">
-    <div class="hero-grid">
-      <div>
-        <div class="eyebrow">Customer Operations Leader · Seattle, WA</div>
-        <h1>Building and scaling<br>high-performing support teams.</h1>
-        <p class="lede">10+ years building and scaling customer support systems at Gusto and Apple — running AI-enabled operations for a 200,000+ customer base while sustaining 90%+ CSAT and turning conversation and SLA data into measurable productivity gains.</p>
-        <div class="cta">
-          <a class="btn btn-primary" href="#contact">Get in touch</a>
-          <a class="btn btn-ghost" href="Lindsey-Flenner-Resume.pdf" download>Download resume</a>
-        </div>
-      </div>
-      <div class="order-photo">
-        <!-- Save your photo as headshot.jpg next to index.html. Adjust object-position in the .headshot CSS if the framing needs nudging. -->
-        <img class="headshot" alt="Lindsey Flenner" src="headshot.jpg">
+    <div class="hero-inner">
+      <div class="eyebrow">Customer Operations Leader · Seattle, WA</div>
+      <h1>Building and scaling<br>high-performing support teams.</h1>
+      <p class="lede">10+ years building and scaling customer support systems at Gusto and Apple — running AI-enabled operations for a 200,000+ customer base while sustaining 90%+ CSAT and turning conversation and SLA data into measurable productivity gains.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#contact">Get in touch</a>
+        <a class="btn btn-ghost" href="Lindsey-Flenner-Resume.pdf" download>Download resume</a>
       </div>
     </div>
   </div>
